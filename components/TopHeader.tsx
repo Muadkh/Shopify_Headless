@@ -26,7 +26,7 @@ const HeaderTop = () => {
             <b>FREE SHIPPING   </b>THIS WEEK ORDER OVER - RS: 5000
           </div>
 
-          <div className="flex gap-4 sm:hidden lg:block">
+          {/* <div className="flex gap-4 sm:hidden lg:block">
             <select
               className="text-gray-800 text-[12px] w-[70px] sm:"
               name="currency"
@@ -45,7 +45,7 @@ const HeaderTop = () => {
               <option value="English">English</option>
               <option value="French">French</option>
             </select>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

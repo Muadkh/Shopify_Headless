@@ -17,7 +17,7 @@ import gql from "graphql-tag";
 import { ImageResponse } from "next/server";
 import Link from "next/link";
 import ScroolingProd from "@/components/ScroolingProd";
-import { createCart } from "@/app/Cart/actions";
+import { createCartFunc } from "@/app/Cart/actions";
 import { SelectionRange } from "typescript";
 import { RelatedProducts } from "@/components/RelatedProducts";
 import {ProductImages} from '../../../components/Cart/ProductImages'
@@ -60,7 +60,7 @@ const ProductDetails = async(params:any) => {
   const { data} = await StoreFrontFunc(query, { handle: params.params.handle});
   const images = data.productByHandle.images;
   const descr = data.productByHandle.descriptionHtml;
-// console.log(data.productByHandle.variants.edges[0])
+console.log(data.productByHandle.images)
 
   return (
     <>
@@ -79,7 +79,9 @@ const ProductDetails = async(params:any) => {
               <AiFillStar />
               <AiOutlineStar />
             </div>
-            <h4 className="font-bold  text-blackish text-[20px]">Details: </h4>
+          <div>
+           <h4 className="font-bold  text-blackish text-[20px]">Details: </h4>
+            </div> 
              <div className="font-normal  text-blackish flex flex-wrap text-[16px]">
               {ProductDescription(data.productByHandle)}
             </div>
@@ -87,7 +89,11 @@ const ProductDetails = async(params:any) => {
               Rs: {parseInt(price)}
             </div>
            <SelectOptions data={data}></SelectOptions>
-          <AddtoCart  selectedVarientid={data.productByHandle.variants.edges[0].node.id}></AddtoCart>
+          <AddtoCart  selectedVarientid={data.productByHandle.variants.edges[0].node.id}
+  
+          
+          
+          ></AddtoCart>
 
           </div>
         </div>
@@ -96,7 +102,7 @@ const ProductDetails = async(params:any) => {
   {
    
 
-     RelatedProducts()
+    //  RelatedProducts()
  
   
   }

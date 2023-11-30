@@ -10,17 +10,16 @@ export const ProductImages = (props:any) => {
               className="flex sm:items-center sm:justify-center m-auto transition ease-in-out"
               src={im}
               height={500}
-              width={"400"}
+              width={400}
               alt="test"
               priority={true}
             ></Image>
           </div>
           <div className="border-2 p-4 relative flex lg:flex-col flex-shrink items-center  justify-center h-full sm:flex-row">
             {props.images.edges.map((item: any, index: number) => (
-              <div className="m-2 border-2 border-red-400 " 
-              key={index}
-              >
+              <div key={item.node.url} className="m-2 border-2 border-red-400 ">
                 <Image
+                
                 
                   src={item.node.url}
                   height={80}

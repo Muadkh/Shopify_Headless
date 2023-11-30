@@ -1,3 +1,4 @@
+
 import React, { Suspense } from "react";
 
 import { BsSearch } from "react-icons/bs";
@@ -46,10 +47,16 @@ const HeaderMain = () => {
               </div>
             </div>
           </Link> */}
+          <div className="relative">
+
          <Suspense fallback={<OpenCart />}>
-              {/* @ts-expect-error Async */}
+            
             <Cart />
+            <div className="bg-red-600 rounded-full top-0 right-0 absolute w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
+            0 
+          </div>
           </Suspense>
+          </div>
         </div>
       </div>
     </div>

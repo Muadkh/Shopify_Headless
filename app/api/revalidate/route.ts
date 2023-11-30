@@ -1,4 +1,4 @@
-import { revalidate } from 'lib/shopify';
+import { revalidate } from '../../../utils/revaliDate';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';

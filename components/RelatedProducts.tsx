@@ -43,19 +43,16 @@ export async function RelatedProducts(){
     
   return(
     <>
-    
-    
-    <div className="">
           <h2 className="mt-8 font-bold flex items-center justify-center text-[20px]">You may also like</h2>
         
           <Marquee speed={40} pauseOnHover={true}  play={true} direction={"left"}  >
     
             
-            <div className="  ">
+         <div className="  ">
           <div className="flex gap-x-4   ">
               {data.products.edges.map((item: any, index: number) => ( <div className="flex "> 
                 < ScroolingProd
-                  key={index}
+                  key={item.node.handle}
                   img={item.node.images.edges[0].node.url}
                   title={item.node.title}
                   price={item.node.variants.edges[0].node.price.amount}
@@ -67,11 +64,9 @@ export async function RelatedProducts(){
                 </div>))}
             </div>
           </div>
-                </Marquee>
+       </Marquee>
                
-        </div>
-    
-    
+      
     
     </>
   )

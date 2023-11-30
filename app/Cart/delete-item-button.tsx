@@ -9,7 +9,7 @@ import { useTransition } from 'react';
 export default function DeleteItemButton({ item }: { item: any }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
-
+  // console.log("id",item.id)
   return (
     <button
       aria-label="Remove cart item"
@@ -36,7 +36,7 @@ export default function DeleteItemButton({ item }: { item: any }) {
       {isPending ? (
         <LoadingDots className="bg-white" />
       ) : (
-        <XMarkIcon className="hover:text-accent-3 mx-[1px] h-4 w-4 text-white dark:text-black" />
+        <XMarkIcon className="hover:text-accent-3 mx-[1px] h-4 w-4 m-0 text-white dark:text-black" />
       )}
     </button>
   );

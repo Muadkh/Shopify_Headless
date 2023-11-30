@@ -16,8 +16,11 @@ const Testimonial = () => {
                 height={80}
                 alt="dp"
               />
+              <div>
+
               <h2 className="text-gray-500 font-black text-[20px]">Elsa Doe</h2>
               <p>CEO & Founder Invision</p>
+              </div>
               <Image
                 className="inline-block py-2"
                 src=""
@@ -25,10 +28,13 @@ const Testimonial = () => {
                 height={30}
                 alt="quotes"
               />
+              <div>
+
               <p className="max-w-[200px] text-gray-500">
                 Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor dolor
                 sit amet.
               </p>
+              </div>
             </div>
           </div>
 
@@ -37,12 +43,15 @@ const Testimonial = () => {
               <button className="bg-blackish text-white p-2 rounded-md">
                 25% DISCOUNT
               </button>
+              <div>
+
               <h2 className="font-extrabold text-2xl text-[#272727]">
                 Summer Collection
               </h2>
               <p className="text-gray-500 text-[20px]">
                 Starting @ $20 <b>Shop Now</b>
               </p>
+              </div>
             </div>
           </div>
         </div>

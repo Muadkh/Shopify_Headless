@@ -10,6 +10,7 @@ import MobNavbar from '@/components/MobNavbar'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { usePathname } from 'next/navigation'
+import { Suspense } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,18 +25,23 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='!scrool-smooth'>
-      <body className={inter.className} >
+    <html lang="en" className='!scrool-smooth '>
+      <body className="bg-white">
       
       
      <TopHeader></TopHeader>
+       <Suspense>
         <MainHeader></MainHeader>
         
-        <NavBar></NavBar>
+       </Suspense>
+         
+
         <MobNavbar></MobNavbar> 
+        <NavBar></NavBar>
         
         {children}
-        <Footer></Footer>
+        
+        <Footer  ></Footer>
         </body>
     </html>
   )

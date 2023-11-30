@@ -3,10 +3,10 @@ import React from 'react'
 
 const updateCartFunc = async (query: any, variables: {
     cartId: string | undefined;
-    lines: { merchandiseId: string; quantity: number };
-  },cache={cache: 'nos-tore'}) => {
- console.log("update",query)
- console.log(variables)
+    lines: { id:string,merchandiseId: string; quantity: number };
+  },cache={cache: 'no-store'}) => {
+//  console.log("",query)
+// console.log(variables.lines)
       
       
       try{

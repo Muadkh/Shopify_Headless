@@ -16,10 +16,10 @@ export const AddtoCart = (props:any) => {
               onClick={()=>{
              startTransition(async () => {
               const error = await addItem(props.selectedVarientid);
-              console.log(error)
+              // console.log(error)
               if (error) {
                 // Trigger the error boundary in the root error.js
-                console.log(error)
+                // console.log(error)
                 throw Error(error.toString());
               }
     

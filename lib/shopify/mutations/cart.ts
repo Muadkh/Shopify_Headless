@@ -1,4 +1,4 @@
-export const editCartItemsMutation =`
+export const editCartItemsMutation = `
   mutation editCartItems($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
     cartLinesUpdate(cartId: $cartId, lines: $lines) {
       cart {
@@ -44,12 +44,11 @@ export const editCartItemsMutation =`
       }
     }
     totalQuantity
-  }
       }
     }
   }`;
 
-export const removeFromCartMutation =`
+export const removeFromCartMutation = `
   mutation removeFromCart($cartId: ID!, $lineIds: [ID!]!) {
     cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
       cart {
@@ -88,8 +87,12 @@ export const removeFromCartMutation =`
                     name
                     value
                   }
-                  
-
+                  product {
+                    id
+              handle
+              availableForSale
+             title
+                  }
                 }
               }
             }
@@ -97,6 +100,5 @@ export const removeFromCartMutation =`
         }
         totalQuantity
       }
-      }
     }
-  }`;
+  }`

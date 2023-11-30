@@ -20,7 +20,7 @@ export default function Home() {
 
     <Hero></Hero>
 
-      {/* @ts-expect-error Async */}
+    
      <Products/>
 </Suspense>
     

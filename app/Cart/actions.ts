@@ -215,7 +215,7 @@ export async function addItem(variantId: string | undefined) {
   let cartId = cookies().get("cartId")?.value;
   let cart;
   if (!cartId ) {
-    cart = await createCart();
+    cart = await createCartFunc();
   }
   
   if (!variantId) {
@@ -254,17 +254,17 @@ export async function createCartFunc() {
 
 
 
-export const removeItem = async (lineId: string): Promise<String | undefined> => {
+export const removeItem = async (lineIds: string): Promise<String | undefined> => {
   const cartId = cookies().get('cartId')?.value;
 
   if (!cartId) {
     return 'Missing cart ID';
   }
   try {
-    await removeFromCartFunc(removeFromCartMutation , {cartId:cartId, lineId:[lineId]});
-  } catch (e) {
-    return 'Error removing item from cart';
-  }
+  await removeFromCartFunc(removeFromCartMutation , {cartId:cartId, lineIds:[lineIds]});
+} catch (e) {
+  return 'Error removing item from cart';
+}
 };
 
 export const updateItemQuantity = async ({
@@ -284,12 +284,11 @@ export const updateItemQuantity = async ({
   try {
     const data=await updateCartFunc(editCartItemsMutation,{cartId, lines:
       {
-        
+        id:lineId,
         merchandiseId: variantId,
         quantity
       }
     });
-    console.log("update",data)
   } catch (e) {
     return 'Error updating item quantity';
   }
@@ -305,8 +304,4 @@ export const createUrl = (pathname: string, params: URLSearchParams | ReadonlyUR
 
   return `${pathname}${queryString}`;
 };
-
-function createCart(): any {
-  throw new Error("Function not implemented.");
-}
 

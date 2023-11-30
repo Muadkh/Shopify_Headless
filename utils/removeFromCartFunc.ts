@@ -1,8 +1,8 @@
 import { cookies, headers } from 'next/headers'
 import React from 'react'
 
-const removeFromCartFunc = async (query: any, variables={},cache={cache: 'nos-tore'}) => {
- console.log("varR",variables)
+const removeFromCartFunc = async (query: any, variables={},cache={cache: 'no-cache'}) => {
+// console.log("varR",variables)
   
   
   try{
