@@ -1,4 +1,5 @@
 
+
 import React, { Suspense } from "react";
 
 import { BsSearch } from "react-icons/bs";
@@ -11,6 +12,7 @@ import OpenCart from "@/app/Cart/cart-open";
 
 const HeaderMain = () => {
   return (
+  
     <div className="border-b border-gray-200 py-6">
       <div className="container sm:flex justify-between items-center">
         <div className="font-bold md:text-4xl sm:text-xl text-center pb-4 sm:pb-0 text-blackish">
@@ -41,25 +43,27 @@ const HeaderMain = () => {
           </div>
           {/* <Link href={'/Cart'}>
             <div className="relative">
-              <HiOutlineShoppingBag />
-              <div className="bg-red-600  rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
-                0
-              </div>
+            <HiOutlineShoppingBag />
+            <div className="bg-red-600  rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
+            0
+            </div>
             </div>
           </Link> */}
           <div className="relative">
+      
+            <Suspense fallback={"rendering"}>
 
-         <Suspense fallback={<OpenCart />}>
-            
             <Cart />
-            <div className="bg-red-600 rounded-full top-0 right-0 absolute w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
-            0 
-          </div>
-          </Suspense>
+            </Suspense>
+          
+          
           </div>
         </div>
       </div>
     </div>
+    
+    
+        
   );
 };
 

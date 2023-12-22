@@ -1,10 +1,11 @@
-"use server";
-
+"use server"
 import StoreFrontFunc from "@/utils/StoreFrontFunc";
 import addTocartFunc from "@/utils/addTocartFunc";
 import removeFromCartFunc from "@/utils/removeFromCartFunc";
 import updateCartFunc from "@/utils/updateCartFunc";
 import { cookies } from "next/headers";
+import { ReadonlyURLSearchParams } from 'next/navigation';
+import { editCartItemsMutation, removeFromCartMutation } from "@/lib/shopify/mutations/cart";
 
 const query = `mutation cartCreate {
     cartCreate {
@@ -47,6 +48,7 @@ const query = `mutation cartCreate {
           currencyCode
         }
       }
+    
     }
   }
 }`;
@@ -159,6 +161,7 @@ const query1=` query GetCart($cartId: ID!) {
         }
       }
     }
+    totalQuantity
   }
 }`
 
@@ -231,7 +234,7 @@ export async function addItem(variantId: string | undefined) {
   
   if (cartId) {
   const data= await getCart({ cartId });
-
+  //  console.log("added")
   
   }
 }
@@ -292,16 +295,5 @@ export const updateItemQuantity = async ({
   } catch (e) {
     return 'Error updating item quantity';
   }
-};
-
-
-import { ReadonlyURLSearchParams } from 'next/navigation';
-import { editCartItemsMutation, removeFromCartMutation } from "@/lib/shopify/mutations/cart";
-
-export const createUrl = (pathname: string, params: URLSearchParams | ReadonlyURLSearchParams) => {
-  const paramsString = params.toString();
-  const queryString = `${paramsString.length ? '?' : ''}${paramsString}`;
-
-  return `${pathname}${queryString}`;
 };
 

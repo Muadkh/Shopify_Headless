@@ -4,7 +4,7 @@ import { cookies, headers } from 'next/headers'
 import React from 'react'
 
 const StoreFrontFunc = async (query:any ,variables={}, cache={cache: 'force-cache'}) => {
-  console.log("api key",variables)
+  // console.log("api key",variables)
   try{
     
     const responce=  await fetch( process.env.NEXT_PUBLIC_API_URL as string,

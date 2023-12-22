@@ -27,17 +27,18 @@ export default function RootLayout({
   return (
     <html lang="en" className='!scrool-smooth '>
       <body className="bg-white">
-      
-      
+    <Suspense>
      <TopHeader></TopHeader>
-       <Suspense>
+     <Suspense>
+
         <MainHeader></MainHeader>
+     </Suspense>
         
-       </Suspense>
          
 
         <MobNavbar></MobNavbar> 
         <NavBar></NavBar>
+      </Suspense>  
         
         {children}
         

@@ -60,7 +60,7 @@ const ProductDetails = async(params:any) => {
   const { data} = await StoreFrontFunc(query, { handle: params.params.handle});
   const images = data.productByHandle.images;
   const descr = data.productByHandle.descriptionHtml;
-console.log(data.productByHandle.images)
+// console.log(data.productByHandle.images)
 
   return (
     <>

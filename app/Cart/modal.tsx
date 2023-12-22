@@ -10,18 +10,22 @@ import CloseCart from "./close-cart";
 import Image from "next/image"
 import EditItemQuantityButton from "./edit-item-quantity-button";
 import DeleteItemButton from "./delete-item-button";
-import { createUrl } from "./actions";
+import { createUrl } from '../../lib/utils'
 import { string } from "prop-types";
+import { Cart } from "@/lib/shopify/types";
+import { exit } from "process";
+import { useRouter } from 'next/navigation';
 type MerchandiseSearchParams = {
   [key: string]: string;
 };
-export default function CartModal(props:any) {
-  const cart=props.cart
+
+export default function CartModal({ cart }: { cart: Cart| undefined }) {
   const [isOpen, setIsOpen] = useState(false);
-  const quantityRef = useRef(cart?.totalQuantity);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
-  
+  const quantityRef = useRef(cart?.totalQuantity);
+  // console.log("cart",cart)
+  const router = useRouter()
   useEffect(() => {
     // Open cart modal when quantity changes.
     if (cart?.totalQuantity !== quantityRef.current) {
@@ -34,10 +38,11 @@ export default function CartModal(props:any) {
       // Always update the quantity reference
       quantityRef.current = cart?.totalQuantity;
     }
-  }, [isOpen, cart?.totalQuantity, quantityRef]);
 
+  }, [isOpen, cart?.totalQuantity, quantityRef]);
   return (
-    <>
+    <> 
+     
       <button aria-label="Open cart" onClick={openCart}>
         <OpenCart quantity={cart?.totalQuantity} />
       </button>
@@ -81,7 +86,7 @@ export default function CartModal(props:any) {
                 <div className="flex h-full flex-col justify-between overflow-hidden p-1">
                   <ul className="flex-grow overflow-auto py-4">
                     {cart.lines.edges.map((item:any ,index:any) => {
-                      //  console.log(cart)
+                      // console.log("item",item)
                       const merchandiseSearchParams = {} as MerchandiseSearchParams;
 
                       item.node.merchandise.selectedOptions.forEach(( name:any, value:any ) => {
@@ -93,7 +98,7 @@ export default function CartModal(props:any) {
                         `/product/${item.node.merchandise.product.handle}`,
                         new URLSearchParams(merchandiseSearchParams)
                       );
-
+                      // console.log("merch",item.node.merchandise.product.handle)
                       return (
                         <li
                           key={item.node.merchandise.product.handle}
@@ -104,7 +109,7 @@ export default function CartModal(props:any) {
                               <DeleteItemButton item={item.node} />
                             </div>
                             <Link
-                              href={merchandiseUrl}
+                              href={"/"}
                               onClick={closeCart}
                               className="z-30 flex flex-row space-x-4"
                             >
@@ -173,12 +178,15 @@ export default function CartModal(props:any) {
                       />
                     </div>
                   </div>
+                  <div>
+
                   <a
                     href={cart.checkoutUrl}
                     className="block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
-                  >
+                    >
                     Proceed to Checkout
                   </a>
+                    </div>
                 </div>
               )}
             </Dialog.Panel>

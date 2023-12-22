@@ -7,7 +7,7 @@ const addTocartFunc = async (
     cartId: string | undefined;
     lines: { merchandiseId: string; quantity: number }[];
   },
-  cache = { cache: "no-store" }
+  cache = { cache: "" }
 ) => {
   try {
     const responce = await fetch(process.env.NEXT_PUBLIC_API_URL as string, {
