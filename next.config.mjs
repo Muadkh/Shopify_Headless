@@ -6,7 +6,7 @@ images:{
 },
 reactStrictMode:true,
 experimental: {
-    serverActions: true,
+  
   },
 
 

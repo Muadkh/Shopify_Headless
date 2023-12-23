@@ -8,7 +8,7 @@ export default async function Cart() {
 
 let cart  
   if (cartId) {
-    console.log("cart","gerring cart")
+    // console.log("cart","gerring cart")
 
       cart = await getCart({cartId});
   

@@ -218,7 +218,8 @@ export async function addItem(variantId: string | undefined) {
   let cartId = cookies().get("cartId")?.value;
   let cart;
   if (!cartId ) {
-    cart = await createCartFunc();
+    await createCartFunc();
+     
   }
   
   if (!variantId) {
@@ -226,32 +227,38 @@ export async function addItem(variantId: string | undefined) {
   }
   
   try {
+    cartId = cookies().get("cartId")?.value;
+    console.log(cartId)
     await addTocartFunc(query2,{cartId, lines:[{ merchandiseId: variantId, quantity: 1 }]});
+      const cart=await getCart({cartId} );
+  
+  
   }
   catch (e) {
     return 'Error adding item to cart';
   }
   
-  if (cartId) {
-  const data= await getCart({ cartId });
-  //  console.log("added")
+  // if (cartId) {
+  // const cart=await getCart({ cartId });
+  // console.log("cart",cart)
   
-  }
+  // }
 }
 
 
 export async function getCart(props: { cartId: string|undefined }) {
   const cartId=props.cartId
-  const {data}= await StoreFrontFunc(query1,  {cartId} );
-  
-  return data.cart
+  // console.log("cartID",cartId)
+   const {data}=await StoreFrontFunc(query1,  {cartId} );
+     return data.cart
 }
 export async function createCartFunc() {
-  const { data } = await StoreFrontFunc(query);
+  const {data}  = await StoreFrontFunc(query);
   const CheckoutUrl = data?.cartCreate?.cart.checkoutUrl;
   const cartId = data?.cartCreate?.cart.id;
+  // console.log(data?.cartCreate?.cart.id)
   cookies().set("cartId", cartId);
-  return;
+  return
 }
 
 

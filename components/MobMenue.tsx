@@ -8,7 +8,7 @@ const Navbar = () => {
 
     <div className="lg:hidden w-full z-[999] m-auto mt-4">
       <div className="container ">
-        <div className="flex  w-[100%]  gap-2 rounded-full border border-gray-200 border-lgopacity-40 bg-white bg-opacity-80 shadow-md mx-2 font-medium py-4 items-center justify-center text-[8px] text-blackish">
+        <div className="flex  w-[100%]  gap-2 rounded-full border border-gray-300 border-lg opacity-100 bg-gray-100 bg-opacity-80 shadow-md font-medium py-4 items-center justify-center text-[8px] text-blackish">
           <Link className="navbar__link relative" href="/">
             HOME
           </Link>

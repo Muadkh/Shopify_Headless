@@ -9,14 +9,16 @@ export const AddtoCart = (props:any) => {
   const router = useRouter()
  
   return (
-    <div>
+    <form  action={""}>
+
 
 <div className="buttons flex sm:flex-col gap-x-4 lg:flex-row p-8 items-center justify-center">
               <button type="button" className='add-to-cart'
               onClick={()=>{
-             startTransition(async () => {
+                startTransition(async () => {
+                
               const error = await addItem(props.selectedVarientid);
-              // console.log(error)
+              console.log(error)
               if (error) {
                 // Trigger the error boundary in the root error.js
                 // console.log(error)
@@ -28,11 +30,10 @@ export const AddtoCart = (props:any) => {
 
 
               }}
-            >
+              >
                 Add to Cart
               </button>
             </div>
-
-    </div>
+            </form>
   )
 }

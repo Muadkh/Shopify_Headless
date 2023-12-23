@@ -32,7 +32,7 @@ const HeaderMain = () => {
           />
         </div>
 
-        <div className="hidden lg:flex gap-4 text-gray-500 text-[30px]">
+        <div className="flex gap-4 text-gray-500 text-[30px]">
           {/* <BiUser /> */}
 
           <div className="relative">
@@ -51,7 +51,7 @@ const HeaderMain = () => {
           </Link> */}
           <div className="relative">
       
-            <Suspense fallback={"rendering"}>
+            <Suspense fallback={<OpenCart/>}>
 
             <Cart />
             </Suspense>
